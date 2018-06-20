@@ -1,0 +1,32 @@
+.navbar-container {
+  height: 3em;
+  background-color: #add8e6;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-item-container {
+  background-color: #add8e6;
+}
+
+
+.navbar-button {
+  background-color: #add8e6;
+  margin-top: 10px;
+  border: none;
+  font-size: 1.2em;
+  font-family: Georgia;
+  cursor: pointer;
+}
+
+.navbar-button:hover {
+  background-color: #1da9d8;
+}
+.navbar-icon-item {
+  margin-right: 5px;
+  margin-top: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  text-decoration: none;
+}
