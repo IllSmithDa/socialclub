@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import '../CSS/Navbar.css';
+
+// add credentials or else the session will not be saved
+axios.defaults.withCredentials = true;
+
 export default class Navbar extends Component {
   constructor() {
     super();
@@ -22,6 +27,10 @@ export default class Navbar extends Component {
   }
   homePage = () => {
     window.location = '/';
+  }
+  componentDidMount() {
+    axios
+      .get('http://localhost:3030/getUsername')
   }
   render() {
     return(

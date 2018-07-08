@@ -4,8 +4,12 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "aws-sdk": "^2.264.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongoose": "^5.1.6",
+    "mysql": "^2.15.0",
     "nodemon": "^1.17.5"
   },
   "devDependencies": {},
