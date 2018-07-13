@@ -15,7 +15,7 @@ export default class Account extends Component {
   loginUser = (event) => {
     event.preventDefault();
     const user = { username: this.state.username, password: this.state.password };
-    axios.post('http://localhost:3030/loginUser', user)
+    axios.post('http://localhost:3030/mongoLogin', user)
     .then(() => {
       setTimeout(() => {
         window.location = `/profile`;
