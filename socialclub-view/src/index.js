@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import News from './components/News';
 import Account from './components/Account';
 import Login from './components/Login';
+import AdminPage from './components/AdminPage'
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Route path = '/news' component={News} />
     <Route path = '/account' component={Account} />
     <Route path = '/login' component={Login} />
+    <Route path = '/adminpage' component={AdminPage}/>
   </div>
 </Router>, document.getElementById('root'));
 registerServiceWorker();

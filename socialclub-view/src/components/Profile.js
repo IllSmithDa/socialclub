@@ -13,6 +13,7 @@ export default class Profile extends Component {
     this.state = {
       profileName: '',
       uploadImageUrl:'http://localhost:3030/uploadProfilePic',
+      profilePictureSrc:'',
     }
   }
   componentDidMount() {
@@ -21,9 +22,17 @@ export default class Profile extends Component {
       .get('http://localhost:3030/getUsername')
       .then((userData) => {
         console.log('username:', userData.data );
-        
-        // uppercase first letter only and slice rest of the string onto the first to be kept lowercase
-        this.setState({ profileName: userData.data[0].toUpperCase() + userData.data.slice(1) })
+        axios.get('http://localhost:3030/getUserImage')
+        .then((imageData) => {
+          console.log(imageData.data);
+          // uppercase first letter only and slice rest of the string onto the first to be kept lowercase
+          this.setState({ profileName: userData.data[0].toUpperCase() + userData.data.slice(1), profilePictureSrc: imageData.data })
+          console.log(this.state.profilePictureSrc);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      
       })
       .catch(err => {
         console.log(err);
@@ -40,7 +49,7 @@ export default class Profile extends Component {
   setTimer() {
     window.setTimeout(() => {
       console.log('image loaded')
-    }, 500000 )
+    }, 5000 )
   };
   render() {
     return(
@@ -51,7 +60,7 @@ export default class Profile extends Component {
           
           <div class = 'profile-image-container'>
             <button className='image-button' onClick={this.openImageModal}>Update Profile Picture</button>
-            <img class = 'Profile-Image'src = 'https://images.unsplash.com/photo-1530600130-16d76247813a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b2eecd049220309cb59506b1393c0211&auto=format&fit=crop&w=500&q=60'/>
+            <img class = 'Profile-Image'src = {this.state.profilePictureSrc}/>
           </div>
 
           <div id='imageUploadModal' className='image-modal'>

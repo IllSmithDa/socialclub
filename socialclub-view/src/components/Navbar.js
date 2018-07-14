@@ -28,7 +28,7 @@ export default class Navbar extends Component {
     axios
       .get('http://localhost:3030/logoutUser')
       .then(() => {
-        window.location = '/';
+        window.location = '/login';
       })
     }
   }
