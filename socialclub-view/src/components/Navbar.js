@@ -39,12 +39,10 @@ export default class Navbar extends Component {
     window.location = '/';
   }
   componentDidMount() {
-    console.log('i am being reached')
     axios
       .get('http://localhost:3030/getUsername')
       .then((userData) => {
-        console.log('I am also being reached')
-        console.log('username:', userData);
+        // console.log('username:', userData);
         if (userData.data === '' || userData.data === null || userData.data === undefined) {
           this.setState({ loginState: 'LOGIN' });
         } else {

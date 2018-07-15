@@ -17,7 +17,6 @@ export default class Profile extends Component {
     }
   }
   componentDidMount() {
-    console.log('asdfwe');
     axios
       .get('http://localhost:3030/getUsername')
       .then((userData) => {
@@ -55,12 +54,12 @@ export default class Profile extends Component {
     return(
       <div>
         <Navbar />
-        <div class = 'Page-Container'>
+        <div className = 'Page-Container'>
           <h1>{this.state.profileName}'s Profile</h1>
           
-          <div class = 'profile-image-container'>
+          <div className = 'profile-image-container'>
             <button className='image-button' onClick={this.openImageModal}>Update Profile Picture</button>
-            <img class = 'Profile-Image'src = {this.state.profilePictureSrc}/>
+            <img className = 'Profile-Image'src = {this.state.profilePictureSrc} alt='profilePicture'/>
           </div>
 
           <div id='imageUploadModal' className='image-modal'>
@@ -80,7 +79,7 @@ export default class Profile extends Component {
           
 
           <video width="320" height="240" controls>
-            <source src="C:\Users\Samuel Kim\Documents\assets\VTest1.mp4" type="video/mp4"/>
+            <source src="https://s3.amazonaws.com/my.unique.bucket.uservideos/test1.mp4" type="video/mp4"/>
           </video>
           <video width="320" height="240" controls>
             <source src="C:\Users\Samuel Kim\Documents\assets\VTest1.mp4" type="video/mp4"/>
