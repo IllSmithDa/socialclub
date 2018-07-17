@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import axios from 'axios';
 import UserVideoList from './UserVideoList';
 import '../CSS/PageLayout.css';
+
 export default class Account extends Component {
   constructor() {
     super();

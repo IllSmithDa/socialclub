@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import AllVideos from '../components/AllVideos';
 import '../CSS/PageLayout.css';
 
 export default class News extends Component {
-
   render() {
-    return(
+    return (
       <div>
         <Navbar />
         <div class = 'Page-Container'>
-          <h1>News Page</h1>
+          <AllVideos/>
         </div>
       </div>
     );

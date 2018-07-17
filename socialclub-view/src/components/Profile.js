@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import UserVideoList from './UserVideoList';
 import '../CSS/PageLayout.css';
 import '../CSS/Profile.css';
 
@@ -58,7 +59,7 @@ export default class Profile extends Component {
           <h1>{this.state.profileName}'s Profile</h1>
           
           <div className = 'profile-image-container'>
-            <button className='image-button' onClick={this.openImageModal}>Update Profile Picture</button>
+            <button className='image-button'>Update Profile Picture</button>
             <img className = 'Profile-Image'src = {this.state.profilePictureSrc} alt='profilePicture'/>
           </div>
 
@@ -76,20 +77,8 @@ export default class Profile extends Component {
               </form> 
             </div>
           </div>
-          
-
-          <video width="320" height="240" controls>
-            <source src="https://s3.amazonaws.com/my.unique.bucket.uservideos/test1.mp4" type="video/mp4"/>
-          </video>
-          <video width="320" height="240" controls>
-            <source src="C:\Users\Samuel Kim\Documents\assets\VTest1.mp4" type="video/mp4"/>
-          </video> 
-          <video width="320" height="240" controls>
-            <source src="C:\Users\Samuel Kim\Documents\assets\VTest1.mp4" type="video/mp4"/>
-          </video> 
-          <video width="320" height="240" controls>
-            <source src="C:\Users\Samuel Kim\Documents\assets\VTest1.mp4" type="video/mp4"/>
-          </video>  
+          <h1> {this.state.profileName}'s Videos</h1>
+          <UserVideoList/>
         </div>
       </div>
     );

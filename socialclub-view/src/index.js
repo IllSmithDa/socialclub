@@ -7,7 +7,8 @@ import Profile from './components/Profile';
 import News from './components/News';
 import Account from './components/Account';
 import Login from './components/Login';
-import AdminPage from './components/AdminPage'
+import AdminPage from './components/AdminPage';
+import VideoPlayer from './components/VideoPlayer';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -19,6 +20,7 @@ ReactDOM.render(
     <Route path = '/account' component={Account} />
     <Route path = '/login' component={Login} />
     <Route path = '/adminpage' component={AdminPage}/>
+    <Route path = '/video/:videoID' component={VideoPlayer}/>
   </div>
 </Router>, document.getElementById('root'));
 registerServiceWorker();
