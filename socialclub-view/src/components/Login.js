@@ -15,7 +15,7 @@ export default class Account extends Component {
   loginUser = (event) => {
     event.preventDefault();
     const user = { username: this.state.username, password: this.state.password };
-    axios.post('http://localhost:3030/mongoLogin', user)
+    axios.post(' https://friendrealm-backend.herokuapp.com/mongoLogin', user)
     .then(() => {
       setTimeout(() => {
         window.location = `/profile`;

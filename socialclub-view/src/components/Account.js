@@ -11,7 +11,7 @@ export default class Account extends Component {
     this.state = {
       videoName: '',
       videoRequest: '',
-      videoUploadReq: 'http://localhost:3030/uploadVideo',
+      videoUploadReq: ' https://friendrealm-backend.herokuapp.com/uploadVideo',
       userVideoName: '',
     }
   }

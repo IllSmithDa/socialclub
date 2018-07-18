@@ -29,7 +29,7 @@ export default class VideoPlayer extends Component {
      console.log(getID);
      let videoID = { videoID: getID };
      axios
-      .post('http://localhost:3030/getVideo', videoID)
+      .post(' https://friendrealm-backend.herokuapp.com/getVideo', videoID)
       .then((videoData) => {
         console.log('videoData id', videoData.data._id);
         this.state.videoURL = videoData.data.videoURL;

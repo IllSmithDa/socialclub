@@ -13,7 +13,7 @@ export default class AllVideos extends Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:3030/getAllVideos')
+    axios.get(' https://friendrealm-backend.herokuapp.com/getAllVideos')
       .then((videoData) => {
         this.setState({ videoList: videoData.data });
         console.log(this.state.videoList);

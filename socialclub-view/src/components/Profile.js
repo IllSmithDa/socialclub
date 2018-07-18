@@ -13,16 +13,16 @@ export default class Profile extends Component {
     super();
     this.state = {
       profileName: '',
-      uploadImageUrl:'http://localhost:3030/uploadProfilePic',
+      uploadImageUrl:' https://friendrealm-backend.herokuapp.com/uploadProfilePic',
       profilePictureSrc:'',
     }
   }
   componentDidMount() {
     axios
-      .get('http://localhost:3030/getUsername')
+      .get(' https://friendrealm-backend.herokuapp.com/getUsername')
       .then((userData) => {
         console.log('username:', userData.data );
-        axios.get('http://localhost:3030/getUserImage')
+        axios.get(' https://friendrealm-backend.herokuapp.com/getUserImage')
         .then((imageData) => {
           console.log(imageData.data);
           // uppercase first letter only and slice rest of the string onto the first to be kept lowercase

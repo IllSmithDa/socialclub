@@ -12,7 +12,7 @@ export default class AdminPage extends Component {
     super();
     this.state = {
       defaultProfilePic: 'https://s3.amazonaws.com/my.unique.bucket.userimages/DefaultPic.jpg',
-      uploadImageUrl:'http://localhost:3030/addDefaultPic'
+      uploadImageUrl:' https://friendrealm-backend.herokuapp.com/addDefaultPic'
     }
   }
   componentDidMount() {

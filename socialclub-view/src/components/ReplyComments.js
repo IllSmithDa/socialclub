@@ -39,7 +39,7 @@ export default class ReplyComments extends Component {
     // grabs video url inside current url 
     let getID = (window.location.href).split("/").pop();
     let reqVideoID = { videoID: getID };
-    axios.post('http://localhost:3030/getVideo', reqVideoID)
+    axios.post(' https://friendrealm-backend.herokuapp.com/getVideo', reqVideoID)
       .then((videoData) => {
         console.log('replies', videoData.data.comments[this.state.commentIndex].replies);
         this.setState({videoUploader: videoData.data.userName, 
@@ -55,7 +55,7 @@ export default class ReplyComments extends Component {
     let getID = (window.location.href).split("/").pop();
     console.log(this.state.commentIndex);
     const replyData = { videoID: getID, videoUploader: this.state.videoUploader, replyStatement: this.state.replyStatement, commentIndex: this.state.commentIndex};
-    axios.post('http://localhost:3030/addReplies', replyData)
+    axios.post(' https://friendrealm-backend.herokuapp.com/addReplies', replyData)
       .then((data) => {
         console.log('mydata', data)
         this.setState({replyList: data.data, isReplyClicked: false, isRepliesHidden: false});

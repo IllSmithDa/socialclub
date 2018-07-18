@@ -14,7 +14,7 @@ export default class DeleteVideos extends Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:3030/getVideoList')
+    axios.get(' https://friendrealm-backend.herokuapp.com/getVideoList')
     .then((videoData) => {
       this.setState({ videoList: videoData.data });
       console.log(this.state.videoList);
@@ -32,7 +32,7 @@ export default class DeleteVideos extends Component {
     }
     console.log('my array', videoIDArray);
     const videoDeleteData = { videoIDList: videoIDArray}
-    axios.post('http://localhost:3030/deleteVideos', videoDeleteData)
+    axios.post(' https://friendrealm-backend.herokuapp.com/deleteVideos', videoDeleteData)
       .then(() => {
         window.location = `/account`;
       })

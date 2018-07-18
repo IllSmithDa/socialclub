@@ -26,7 +26,7 @@ export default class Navbar extends Component {
     }
     if (this.state.loginState === 'LOGOUT') {
     axios
-      .get('http://localhost:3030/logoutUser')
+      .get(' https://friendrealm-backend.herokuapp.com/logoutUser')
       .then(() => {
         window.location = '/login';
       })
@@ -40,7 +40,7 @@ export default class Navbar extends Component {
   }
   componentDidMount() {
     axios
-      .get('http://localhost:3030/getUsername')
+      .get(' https://friendrealm-backend.herokuapp.com/getUsername')
       .then((userData) => {
         // console.log('username:', userData);
         if (userData.data === '' || userData.data === null || userData.data === undefined) {

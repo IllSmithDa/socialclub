@@ -23,7 +23,7 @@ export default class CommentList extends Component {
 
     const videoReqID = { videoID: getVideoID }
     axios
-      .post('http://localhost:3030/getVideo', videoReqID)
+      .post(' https://friendrealm-backend.herokuapp.com/getVideo', videoReqID)
       .then((videoData) => {
         console.log('video data ', videoData.data);
         for (let i = 0; i < videoData.data.comments.length; i++) {
@@ -46,7 +46,7 @@ export default class CommentList extends Component {
     const commentData = ({ commentUsername: this.state.commentUsername, videoUploader: this.state.videoUploader, 
       videoID: this.state.videoID, comment: this.state.comment });
     axios
-      .post('http://localhost:3030/addComment', commentData)
+      .post(' https://friendrealm-backend.herokuapp.com/addComment', commentData)
       .then(data => {
         console.log(data);
         let videoComments = [];

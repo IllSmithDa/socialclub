@@ -16,7 +16,7 @@ export default class UserVideoList extends Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:3030/getVideoList')
+    axios.get(' https://friendrealm-backend.herokuapp.com/getVideoList')
       .then(data => {  
         let videoList = []
         for (let i = 0; i < data.data.length; i++) {
