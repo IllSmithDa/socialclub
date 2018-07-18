@@ -34,19 +34,14 @@ export default class VideoPlayer extends Component {
         console.log('videoData id', videoData.data._id);
         this.state.videoURL = videoData.data.videoURL;
         this.setState({ videoID: videoData.data.videoID, videoName: videoData.data.videoName, videoUploader: videoData.data.userName, 
-         views: videoData.data.views, videoThumbnail: videoData.data.videoThumbURL })
+          views: videoData.data.views, videoThumbnail: videoData.data.videoThumbURL });
+          console.log('videoName', this.state.videoName);
       })
       .catch((err) => {
         console.log(err);
       })
   }
-  changeVolume = (steps) => {
-    return () => {
-      const { player } = this.refs.player.getState();
-      const volume = player.volume;
-      this.refs.player.volume = volume + steps;
-    };
-  }
+
   render() {
     return(
       <div>

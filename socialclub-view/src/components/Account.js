@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar';
 import axios from 'axios';
 import UserVideoList from './UserVideoList';
+import DeleteVideos from './DeleteVideos';
 import '../CSS/PageLayout.css';
 
 export default class Account extends Component {
@@ -14,13 +15,7 @@ export default class Account extends Component {
       userVideoName: '',
     }
   }
-  componentDidMount() {
-    axios
-      .get('http://localhost:3030/getVideoList')
-      .then((data) => {
-        console.log(data);
-      })
-  }
+
   openModal = () => {
     let modal = document.getElementById('myModal');
     modal.style.display = "block";
@@ -37,7 +32,7 @@ export default class Account extends Component {
   handleVideoName = (event) => {
     this.setState({ userVideoName: event.target.value });
   }
-
+  
   render() {
     return(
       <div>
@@ -45,6 +40,7 @@ export default class Account extends Component {
         <div class = 'Page-Container'>
           <h1>Account Page</h1>
           <button id="myBtn2" onClick={this.openModal}> Upload Video </button>
+          <DeleteVideos deleteVideoList={this.state.videoList} />
           <div id="myModal" className="modal">
             <div className="modal-content">
               <span className="close" onClick={this.closeModal}>&times;</span>

@@ -48,7 +48,7 @@ export default class Navbar extends Component {
         } else {
           this.setState({ loginState: 'LOGOUT' });
         }
-       this.setState({ profileName: userData.data.toUpperCase()   });
+       this.setState({ profileName: userData.data.toUpperCase() });
       })
       .catch(err => {
         console.log(err);

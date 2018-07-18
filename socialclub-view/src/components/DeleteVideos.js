@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../CSS/PageLayout.css';
+
+// add credentials or else the session will not be saved
+axios.defaults.withCredentials = true;
 
 export default class DeleteVideos extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      idVideoDeleteList = [],
-      videoList = [],
+      idVideoDeleteList: [],
+      videoList: [],
     }
   }
   componentDidMount() {
-    axios
-      .post('http://localhost:3030/getVideoList')
-      .then((videoData) => {
-        this.setState({ videoList: videoData.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    axios.get('http://localhost:3030/getVideoList')
+    .then((videoData) => {
+      this.setState({ videoList: videoData.data });
+      console.log(this.state.videoList);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
   deleteSubmission = () => {
-    const videoDeleteData = { videoIDList: this.state.idVideoDeleteList}
+    console.log(this.state.idVideoDeleteList);
+    let videoIDArray = [];
+    for (let i = 0; i < this.state.idVideoDeleteList.length; i++) {
+      videoIDArray.push({Key: this.state.idVideoDeleteList[i]});
+      videoIDArray.push({Key: `${this.state.idVideoDeleteList[i]}tn.jpg`})
+    }
+    console.log('my array', videoIDArray);
+    const videoDeleteData = { videoIDList: videoIDArray}
     axios.post('http://localhost:3030/deleteVideos', videoDeleteData)
       .then(() => {
         window.location = `/account`;
@@ -29,6 +40,15 @@ export default class DeleteVideos extends Component {
         console.log(err);
       })
   }
+  deleteModal = () => {
+    let reqDocument = document.getElementById('DeleteVideos');
+    reqDocument.style.display = 'block';
+  }
+  closeModal = () => {
+    let reqDocument = document.getElementById('DeleteVideos');
+    reqDocument.style.display = 'none';
+  }
+
   handleDeleteCheck = (event) => {
     if (event.target.checked) {
       if (this.state.idVideoDeleteList.length === 0) {
@@ -55,7 +75,25 @@ export default class DeleteVideos extends Component {
   render() {
     return(
       <div>
-        <h1>Hello World!</h1>
+        <button id='DeleteButton' onClick={this.deleteModal}> Delete Video(s) </button>
+        <div id='DeleteVideos' className='modal'>
+           <div className="modal-content">
+              <span className="close" onClick={this.closeModal}>&times;</span>
+              <h1>Select Which Videos you want to delete</h1>
+              {this.state.videoList.map((post, index) => {
+                return (
+                  <div key = {post.id} className = "HomePage-key"> 
+                    <div className = "HomePage-div"> 
+                        <img src = {post.videoThumbURL} alt="thumbnail_photo" width = '200' height = '150'/>
+                        <p className  = "HomePage-videoName"> {post.videoName} </p>
+                      </div>
+                      <input type="checkbox" value = { post.videoID } onChange = { this.handleDeleteCheck } />
+                  </div>
+                );
+              })}
+              <button type="submit"  onClick={ this.deleteSubmission }>Delete Video(s)</button>
+            </div>
+        </div>
       </div>
     );
   }

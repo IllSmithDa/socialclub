@@ -11,14 +11,14 @@ export default class ReplyComments extends Component {
     this.state = {
       isReplyClicked: false,
       isRepliesHidden: true,
-      replayStatement: '',
+      replyStatement: '',
       videoUploader:'',
       replyList: [],
       commentIndex: this.props.commentIndex
     }
   }
   handleReplyChange = (event) => {
-    this.setState({ replayStatement: event.target.value });
+    this.setState({ replyStatement: event.target.value });
   }
   onReplyClick = () => {
     this.setState({ isReplyClicked: true });
@@ -33,7 +33,7 @@ export default class ReplyComments extends Component {
     this.setState({ isRepliesHidden: false })
   }
   handleReplyChange = (event) => {
-    this.setState({ replayStatement: event.target.value });
+    this.setState({ replyStatement: event.target.value });
   }
   componentDidMount() {
     // grabs video url inside current url 
@@ -54,7 +54,7 @@ export default class ReplyComments extends Component {
     // grabs video url inside current url 
     let getID = (window.location.href).split("/").pop();
     console.log(this.state.commentIndex);
-    const replyData = { videoID: getID, videoUploader: this.state.videoUploader, replayStatement: this.state.replayStatement, commentIndex: this.state.commentIndex};
+    const replyData = { videoID: getID, videoUploader: this.state.videoUploader, replyStatement: this.state.replyStatement, commentIndex: this.state.commentIndex};
     axios.post('http://localhost:3030/addReplies', replyData)
       .then((data) => {
         console.log('mydata', data)

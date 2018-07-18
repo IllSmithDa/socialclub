@@ -30,7 +30,7 @@ export default class AllVideos extends Component {
           {this.state.videoList.map((post, index) => {
             return (
               <div key = {post.id} className = "video-key"> 
-                <Link to={`/video/${post._id}`}className = "video-div"> 
+                <Link to={`/video/${post.videoID}`}className = "video-div"> 
                   <img src = {post.videoThumbURL} alt="thumbnail_photo" width = '222' height = '150' />
                   <p className  = "video-videoName" >{post.videoName}</p>
                   <p className = "video-channelName"> channel: {post.userName}</p>  

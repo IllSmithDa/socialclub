@@ -59,7 +59,7 @@ export default class Profile extends Component {
           <h1>{this.state.profileName}'s Profile</h1>
           
           <div className = 'profile-image-container'>
-            <button className='image-button'>Update Profile Picture</button>
+            <button className='image-button' onClick={this.openImageModal}>Update Profile Picture</button>
             <img className = 'Profile-Image'src = {this.state.profilePictureSrc} alt='profilePicture'/>
           </div>
 
