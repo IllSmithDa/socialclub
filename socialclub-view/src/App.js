@@ -16,7 +16,7 @@ class App extends Component {
   createUser = () => {
     const userData = { username: this.state.username, password: this.state.password };
     axios
-      .post('http://localhost:3030/usercreate', userData)
+      .post('https://friendrealm-backend.herokuapp.com/usercreate', userData)
       .then(() => {
         window.location = `/profile`;
       })
