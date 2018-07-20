@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import axios from 'axios';
+import reqURL from './RequestURL';
 import UserVideoList from './UserVideoList';
 import DeleteVideos from './DeleteVideos';
 import '../CSS/PageLayout.css';
@@ -11,7 +12,7 @@ export default class Account extends Component {
     this.state = {
       videoName: '',
       videoRequest: '',
-      videoUploadReq: ' https://friendrealm-backend.herokuapp.com/uploadVideo',
+      videoUploadReq: `${reqURL}/uploadVideo`,
       userVideoName: '',
     }
   }

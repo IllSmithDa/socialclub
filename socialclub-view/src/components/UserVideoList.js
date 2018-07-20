@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import reqURL from './RequestURL';
 import '../CSS/PageLayout.css';
 import '../CSS/VideoLayout.css';
 
@@ -16,7 +17,7 @@ export default class UserVideoList extends Component {
     }
   }
   componentDidMount() {
-    axios.get(' https://friendrealm-backend.herokuapp.com/getVideoList')
+    axios.get(`${reqURL}/getVideoList`)
       .then(data => {  
         let videoList = []
         for (let i = 0; i < data.data.length; i++) {

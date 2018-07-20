@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import reqURL from './RequestURL';
 import '../CSS/PageLayout.css';
 
 // add credentials or else the session will not be saved
@@ -14,7 +15,7 @@ export default class DeleteVideos extends Component {
     }
   }
   componentDidMount() {
-    axios.get(' https://friendrealm-backend.herokuapp.com/getVideoList')
+    axios.get(`${reqURL}/getVideoList`)
     .then((videoData) => {
       this.setState({ videoList: videoData.data });
       console.log(this.state.videoList);
@@ -32,7 +33,7 @@ export default class DeleteVideos extends Component {
     }
     console.log('my array', videoIDArray);
     const videoDeleteData = { videoIDList: videoIDArray}
-    axios.post(' https://friendrealm-backend.herokuapp.com/deleteVideos', videoDeleteData)
+    axios.post(`${reqURL}/deleteVideos`, videoDeleteData)
       .then(() => {
         window.location = `/account`;
       })

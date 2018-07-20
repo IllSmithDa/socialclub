@@ -3,6 +3,7 @@ import { Player, BigPlayButton } from 'video-react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import CommentList from '../components/CommentList';
+import reqURL from './RequestURL';
 import '../CSS/PageLayout.css'
 import '../CSS/VideoLayout.css'
 import '../../node_modules/video-react/dist/video-react.css' // import css
@@ -29,7 +30,7 @@ export default class VideoPlayer extends Component {
      console.log(getID);
      let videoID = { videoID: getID };
      axios
-      .post(' https://friendrealm-backend.herokuapp.com/getVideo', videoID)
+      .post(`${reqURL}/getVideo`, videoID)
       .then((videoData) => {
         console.log('videoData id', videoData.data._id);
         this.state.videoURL = videoData.data.videoURL;

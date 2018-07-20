@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import reqURL from './RequestURL';
 import '../CSS/Navbar.css';
 
 // add credentials or else the session will not be saved
@@ -10,7 +11,8 @@ export default class Navbar extends Component {
     super();
     this.state = {
       profileName: '',
-      loginState: 'LOGIN'
+      loginState: 'LOGIN',
+      accountState: '',
     }
   }
   myProfile = () => {
@@ -26,7 +28,7 @@ export default class Navbar extends Component {
     }
     if (this.state.loginState === 'LOGOUT') {
     axios
-      .get(' https://friendrealm-backend.herokuapp.com/logoutUser')
+      .get(`${reqURL}/logoutUser`)
       .then(() => {
         window.location = '/login';
       })
@@ -40,15 +42,14 @@ export default class Navbar extends Component {
   }
   componentDidMount() {
     axios
-      .get(' https://friendrealm-backend.herokuapp.com/getUsername')
+      .get(`${reqURL}/getUsername`)
       .then((userData) => {
         // console.log('username:', userData);
         if (userData.data === '' || userData.data === null || userData.data === undefined) {
-          this.setState({ loginState: 'LOGIN' });
+          this.setState({ loginState: 'LOGIN',  accountState: '' });
         } else {
-          this.setState({ loginState: 'LOGOUT' });
+          this.setState({ loginState: 'LOGOUT', accountState: 'ACCOUNT',  profileName: userData.data.toUpperCase() });
         }
-       this.setState({ profileName: userData.data.toUpperCase() });
       })
       .catch(err => {
         console.log(err);
@@ -64,7 +65,7 @@ export default class Navbar extends Component {
         </div>
         <div className = "navbar-item-container2">
           <button onClick = {this.myProfile} className = "navbar-button">{this.state.profileName}</button>
-          <button onClick = {this.myAccount} className = "navbar-button">ACCOUNT</button>
+          <button onClick = {this.myAccount} className = "navbar-button">{this.state.accountState}</button>
           <button onClick = {this.loginPage} className = "navbar-button">{this.state.loginState}</button>
         </div>
         </div>

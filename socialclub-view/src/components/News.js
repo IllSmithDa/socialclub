@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import AllVideos from '../components/AllVideos';
+import AllVideos from './AllVideos';
 import '../CSS/PageLayout.css';
 
 export default class News extends Component {

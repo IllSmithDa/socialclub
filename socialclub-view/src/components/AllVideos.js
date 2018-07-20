@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import reqURL from './RequestURL';
 
 // add credentials or else the session will not be saved
 axios.defaults.withCredentials = true;
@@ -13,7 +14,7 @@ export default class AllVideos extends Component {
     }
   }
   componentDidMount() {
-    axios.get(' https://friendrealm-backend.herokuapp.com/getAllVideos')
+    axios.get(`${reqURL}/getAllVideos`)
       .then((videoData) => {
         this.setState({ videoList: videoData.data });
         console.log(this.state.videoList);

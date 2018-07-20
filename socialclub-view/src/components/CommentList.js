@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReplyComments from '../components/ReplyComments';
-
+import reqURL from './RequestURL';
 // add credentials or else the session will not be saved
 axios.defaults.withCredentials = true;
 
@@ -23,7 +23,7 @@ export default class CommentList extends Component {
 
     const videoReqID = { videoID: getVideoID }
     axios
-      .post(' https://friendrealm-backend.herokuapp.com/getVideo', videoReqID)
+      .post(`${reqURL}/getVideo`, videoReqID)
       .then((videoData) => {
         console.log('video data ', videoData.data);
         for (let i = 0; i < videoData.data.comments.length; i++) {
@@ -46,7 +46,7 @@ export default class CommentList extends Component {
     const commentData = ({ commentUsername: this.state.commentUsername, videoUploader: this.state.videoUploader, 
       videoID: this.state.videoID, comment: this.state.comment });
     axios
-      .post(' https://friendrealm-backend.herokuapp.com/addComment', commentData)
+      .post(`${reqURL}/addComment`, commentData)
       .then(data => {
         console.log(data);
         let videoComments = [];

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import reqURL from './RequestURL'
 import '../CSS/PageLayout.css'
 
 axios.defaults.withCredentials = true;
@@ -15,7 +16,7 @@ export default class Account extends Component {
   loginUser = (event) => {
     event.preventDefault();
     const user = { username: this.state.username, password: this.state.password };
-    axios.post(' https://friendrealm-backend.herokuapp.com/mongoLogin', user)
+    axios.post(`${reqURL}/mongoLogin`, user)
     .then(() => {
       setTimeout(() => {
         window.location = `/profile`;

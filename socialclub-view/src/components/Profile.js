@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import UserVideoList from './UserVideoList';
+import reqURL from './RequestURL';
 import '../CSS/PageLayout.css';
 import '../CSS/Profile.css';
 
@@ -13,16 +14,16 @@ export default class Profile extends Component {
     super();
     this.state = {
       profileName: '',
-      uploadImageUrl:' https://friendrealm-backend.herokuapp.com/uploadProfilePic',
+      uploadImageUrl: `${reqURL}/uploadProfilePic`,
       profilePictureSrc:'',
     }
   }
   componentDidMount() {
     axios
-      .get(' https://friendrealm-backend.herokuapp.com/getUsername')
+      .get(`${reqURL}/getUsername`)
       .then((userData) => {
         console.log('username:', userData.data );
-        axios.get(' https://friendrealm-backend.herokuapp.com/getUserImage')
+        axios.get(`${reqURL}/getUserImage`)
         .then((imageData) => {
           console.log(imageData.data);
           // uppercase first letter only and slice rest of the string onto the first to be kept lowercase

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import reqURL from './RequestURL'
+import AllVideos from './AllVideos';
 import '../CSS/PageLayout.css';
 import '../CSS/Profile.css';
+
 
 // add credentials or else the session will not be saved
 axios.defaults.withCredentials = true;
@@ -12,7 +15,7 @@ export default class AdminPage extends Component {
     super();
     this.state = {
       defaultProfilePic: 'https://s3.amazonaws.com/my.unique.bucket.userimages/DefaultPic.jpg',
-      uploadImageUrl:' https://friendrealm-backend.herokuapp.com/addDefaultPic'
+      uploadImageUrl:`${reqURL}/addDefaultPic`
     }
   }
   componentDidMount() {
@@ -36,6 +39,7 @@ export default class AdminPage extends Component {
       <div>
         <Navbar/>
         <div  class = 'Page-Container'>
+          <h1>Admin's Profile</h1>
           <div class = 'profile-image-container'>
             <button className='image-button' onClick={this.openImageModal}>Update Profile Picture</button>
             <img class = 'Profile-Image'src = {this.state.defaultProfilePic}/>
@@ -55,6 +59,7 @@ export default class AdminPage extends Component {
               </form> 
             </div>
           </div>
+          <AllVideos/>
         </div>
       
       </div>
