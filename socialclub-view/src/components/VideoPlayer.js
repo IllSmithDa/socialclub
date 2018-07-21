@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Player, BigPlayButton } from 'video-react';
+import { Player, BigPlayButton, } from 'video-react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import CommentList from '../components/CommentList';

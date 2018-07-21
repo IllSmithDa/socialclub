@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Player, BigPlayButton } from 'video-react';
 import reqURL from './RequestURL';
 import '../CSS/PageLayout.css';
 import '../CSS/VideoLayout.css';
@@ -38,7 +39,9 @@ export default class UserVideoList extends Component {
             return (
               <div key = {post.id} className = "video-key"> 
                 <Link to={`/video/${post.videoID}`}className = "video-div"> 
-                  <img src = {post.videoThumbURL} alt="thumbnail_photo" width = '222' height = '150' />
+                  <Player src = {post.videoURL} >
+                    <BigPlayButton position="center" />
+                  </Player>
                   <p className  = "video-videoName" >{post.videoName}</p>
                   <p className = "video-channelName"> channel: {post.userName}</p>  
                 </Link>
