@@ -38,7 +38,7 @@ export default class UserVideoList extends Component {
          {this.state.videoList.map((post, index) => {
             return (
               <div key = {post.id} className = "video-key"> 
-                <Link to={`/video/${post.videoID}`}className = "video-div"> 
+                <Link to={`/video/${post.videoID}`} className = "video-div"> 
                   <Player src = {post.videoURL} >
                     <BigPlayButton position="center" />
                   </Player>

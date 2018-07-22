@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Player, BigPlayButton } from 'video-react';
 import reqURL from './RequestURL';
+import '../CSS/VideoLayout.css';
 import '../CSS/PageLayout.css';
 
 // add credentials or else the session will not be saved
@@ -84,14 +85,16 @@ export default class DeleteVideos extends Component {
               <h1>Select Which Videos you want to delete</h1>
               {this.state.videoList.map((post, index) => {
                 return (
-                  <div key = {post.id} className = "HomePage-key"> 
+                  <div key = {post.id} className = "video-key"> 
                     <div className = "HomePage-div"> 
+                      <Link to={`/video/${post.videoID}`} className = "video-div"> 
                         <Player src = {post.videoURL} >
                           <BigPlayButton position="center" />
                         </Player>
-                        <p className  = "HomePage-videoName"> {post.videoName} </p>
-                      </div>
-                      <input type="checkbox" value = { post.videoID } onChange = { this.handleDeleteCheck } />
+                      </Link>
+                      <p className  = "HomePage-videoName"> {post.videoName} </p>
+                    </div>
+                    <input type="checkbox" value = { post.videoID } onChange = { this.handleDeleteCheck } />
                   </div>
                 );
               })}
