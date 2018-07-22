@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Player, BigPlayButton } from 'video-react';
 import reqURL from './RequestURL';
 import '../CSS/PageLayout.css';
 
@@ -85,7 +86,9 @@ export default class DeleteVideos extends Component {
                 return (
                   <div key = {post.id} className = "HomePage-key"> 
                     <div className = "HomePage-div"> 
-                        <img src = {post.videoThumbURL} alt="thumbnail_photo" width = '200' height = '150'/>
+                        <Player src = {post.videoURL} >
+                          <BigPlayButton position="center" />
+                        </Player>
                         <p className  = "HomePage-videoName"> {post.videoName} </p>
                       </div>
                       <input type="checkbox" value = { post.videoID } onChange = { this.handleDeleteCheck } />
